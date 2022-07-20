@@ -1,9 +1,9 @@
 import {inject} from '@loopback/core';
-import {DefaultKeyValueRepository, juggler} from '@loopback/repository';
+import {DefaultCrudRepository, DefaultKeyValueRepository } from '@loopback/repository';
 import {CustomerDataSource} from '../datasources';
-import {Customer} from '../models';
+import {Customer, CustomerRelations} from '../models';
 
-export class CustomerRepository extends DefaultCrudRepository<
+export class CustomerRepository extends DefaultKeyValueRepository<
   Customer
 > {
   constructor(

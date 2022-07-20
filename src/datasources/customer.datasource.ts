@@ -1,4 +1,4 @@
-import {inject, lifeCycleObserver, LifeCycleObserver} from '@loopback/core';
+import {inject, lifeCycleObserver, LifeCycleObserver, ValueOrPromise} from '@loopback/core';
 import {juggler} from '@loopback/repository';
 
 const config = {
@@ -26,5 +26,12 @@ export class CustomerDataSource extends juggler.DataSource
     dsConfig: object = config,
   ) {
     super(dsConfig);
+  }
+
+
+
+  stop():ValueOrPromise<void> // to shutdown app gracefull after disconnecting datasource
+  {
+    return super.disconnect();
   }
 }

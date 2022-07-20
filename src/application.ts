@@ -10,7 +10,7 @@ import {ServiceMixin} from '@loopback/service-proxy';
 import path from 'path';
 import {MySequence} from './sequence';
 import redis from 'redis';
-const client = redis.createClient()
+//const client = redis.createClient()
 
 export {ApplicationConfig};
 
