@@ -29,12 +29,13 @@ export class CustomerController {
   ) {}
 
   
-  @post('/save-data-to-redis')
+  @post('/post-to-redis')
   async saveDatatoRedis(): Promise<void> {
     try {
       let timeForExpiring = 300;
       await this.customerRepository.set('customer_name', {
         customer_name: 'Rukesh',
+        customer_age : 29
       });
 
       await this.customerRepository.expire(
