@@ -3,9 +3,9 @@ const nodemailer = require("nodemailer");
 
 
 async function main() {
-  let testAccount = await nodemailer.createTestAccount();
+  const testAccount = await nodemailer.createTestAccount();
 
-  let transporter = nodemailer.createTransport({
+  const transporter = nodemailer.createTransport({
     host: "smtp.mailtrap.io",
     port: 2525,
     secure: false, 
@@ -17,11 +17,11 @@ async function main() {
 
   
   let info = await transporter.sendMail({
-    from: '"Rukesh Paudel" <rukesh@example.com>',
-    to: "getit@example.com, baz@example.com", 
-    subject: "Test Mail", 
-    text: "Hope you find this test mail ", 
-    html: "<b>Hope you find this test mail </b>", 
+    from: '"Testacc" <test@example.com>',
+    to: "testreciever@example.com", 
+    subject: "Example Mail", 
+    text: "Exampe  mail testing ", 
+    html: "<h1>This is an example mail </h1>", 
   });
 
 console.log("Message sent: %s", info.messageId);
