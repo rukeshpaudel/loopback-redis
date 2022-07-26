@@ -3,21 +3,10 @@ import {juggler} from '@loopback/repository';
 
 const config = {
   name: 'mail',
-  connector: 'mail',
-  "tranasports":[{
-    "type": "smtp",
-    "host" : "smtp.mailtrap.io",
-    "secure" : false,
-    "port" : 2525,
-    "tls":{
-      "rejectUnauthorized": false
-    },
-    "auth":{
-      "user" : "f2315e41b19484",
-      "pass" :"35ffdd01356c42"
-    }
-
-  }]
+  connector: 'soap',
+  url: '',
+  wsdl: '',
+  remotingEnabled: true
 };
 
 // Observe application's life cycle to disconnect the datasource when
