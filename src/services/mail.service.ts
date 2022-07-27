@@ -1,6 +1,31 @@
 "use strict";
+import { Provider } from "@loopback/core";
+import { juggler } from "@loopback/service-proxy";
 const nodemailer = require("nodemailer");
 
+export interface EmailResponse
+{
+  output:{
+    from : string,
+    to : string,
+    subject : string,
+    html : string
+  }
+}
+
+export interface EmailParameter
+{
+    from : string,
+    to : string,
+    subject : string,
+    html : string
+  }
+
+
+export interface EmailService{
+  output(args: EmailParameter) : Promise<EmailResponse>
+
+}
 
 async function main() {
   const testAccount = await nodemailer.createTestAccount();
@@ -10,8 +35,8 @@ async function main() {
     port: 2525,
     secure: false, 
     auth: {
-      user: "f2315e41b19484", 
-      pass: "35ffdd01356c42", 
+      user: process.env.USER, 
+      pass: process.env.PASS, 
     },
   });
 
