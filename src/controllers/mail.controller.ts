@@ -1,98 +1,22 @@
-import {
-  Count,
-  CountSchema,
-  Filter,
-  FilterExcludingWhere,
-  repository,
-  Where,
-} from '@loopback/repository';
-import {
-  post,
-  param,
-  get,
-  getModelSchemaRef,
-  patch,
-  put,
-  del,
-  requestBody,
-  response,
-} from '@loopback/rest';
-import {Mail} from '../models';
-import {MailRepository} from '../repositories';
+// import { Request, RestBindings, get, ResponseObject } from 
 
-export class MailController {
-  constructor(
-    @repository(MailRepository)
-    public mailRepository : MailRepository,
-  ) {}
+// '@loopback/rest';
+// import { inject } from '@loopback/context';
+// import { MailService } from "../services";
 
-  @post('/mail')
-  @response(200, {
-    description: 'Mail model instance',
-    content: {'application/json': {schema: getModelSchemaRef(Mail)}},
-  })
-  async create(
-    @requestBody({
-      content: {
-        'application/json': {
-          schema: getModelSchemaRef(Mail, {
-            title: 'NewMail',
-            
-          }),
-        },
-      },
-    })
-    mail: Mail,
-  ): Promise<Mail> {
-    return this.mailRepository.create(mail);
-  }
+// export class MailController {
+//   constructor(
+//     @inject ???
+//     public mailService: MailService
+//   ) { }
 
-  @get('/mail/count')
-  @response(200, {
-    description: 'Mail model count',
-    content: {'application/json': {schema: CountSchema}},
-  })
-  async count(
-    @param.where(Mail) where?: Where<Mail>,
-  ): Promise<Count> {
-    return this.mailRepository.count(where);
-  }
-
-  @get('/mail')
-  @response(200, {
-    description: 'Array of Mail model instances',
-    content: {
-      'application/json': {
-        schema: {
-          type: 'array',
-          items: getModelSchemaRef(Mail, {includeRelations: true}),
-        },
-      },
-    },
-  })
-  async find(
-    @param.filter(Mail) filter?: Filter<Mail>,
-  ): Promise<Mail[]> {
-    return this.mailRepository.find(filter);
-  }
-
-  @patch('/mail')
-  @response(200, {
-    description: 'Mail PATCH success count',
-    content: {'application/json': {schema: CountSchema}},
-  })
-  async updateAll(
-    @requestBody({
-      content: {
-        'application/json': {
-          schema: getModelSchemaRef(Mail, {partial: true}),
-        },
-      },
-    })
-    mail: Mail,
-    @param.where(Mail) where?: Where<Mail>,
-  ): Promise<Count> {
-    return this.mailRepository.updateAll(mail, where);
-  }
-
-}
+//   @get('/mail/acceptation')
+//   async sendEmail(email: string): Promise<any> {
+//     let info = await this.mailerService.sendMail({
+//       to: `${email}`,
+//       subject: 'testmail',
+//       html: '<p>Hallo</p>'
+//     })
+//     return info;
+//   }
+// }

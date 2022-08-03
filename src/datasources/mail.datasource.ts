@@ -3,12 +3,21 @@ import {juggler} from '@loopback/repository';
 
 const config = {
   name: 'mail',
-  connector: 'kv-redis',
-  url: '',
-  host: '127.0.0.1',
-  port: 6379,
-  password: '',
-  db: 0
+  connector: 'mail',
+  "tranasports":[{
+    "type": "smtp",
+    "host" : "smtp.mailtrap.io",
+    "secure" : false,
+    "port" : 2525,
+    "tls":{
+      "rejectUnauthorized": false
+    },
+    "auth":{
+      "user" : "f2315e41b19484",
+      "pass" :"35ffdd01356c42"
+    }
+
+  }]
 };
 
 // Observe application's life cycle to disconnect the datasource when
