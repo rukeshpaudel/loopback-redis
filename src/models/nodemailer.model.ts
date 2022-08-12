@@ -1,7 +1,8 @@
 import {Model, model, property} from '@loopback/repository';
-import { Envelope } from './envelope.model';
+import {Envelope} from './envelope.model';
+
 @model()
-export class Nodemailer extends Model {
+export class NodeMailer extends Model {
   @property.array({
     type: 'string',
   })
@@ -41,13 +42,7 @@ export class Nodemailer extends Model {
   })
   messageId: string;
 
-  constructor(data?: Partial<Nodemailer>) {
+  constructor(data?: Partial<NodeMailer>) {
     super(data);
   }
 }
-
-export interface NodemailerRelations {
-  // describe navigational properties here
-}
-
-export type NodemailerWithRelations = Nodemailer & NodemailerRelations;
