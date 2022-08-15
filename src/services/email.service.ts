@@ -7,7 +7,7 @@ import {createTransport} from 'nodemailer';
 export class EmailService {
  
 
-  private static async setupTransporter() {
+  private static async setupTransporter() { 
     return createTransport({
       host: process.env.SMTP_SERVER,
       port: +process.env.SMTP_PORT!,
